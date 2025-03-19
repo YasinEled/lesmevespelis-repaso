@@ -1,0 +1,15 @@
+.avatar-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu-right {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    display: block;
+    min-width: 150px;
+    background-color: #343a40;
+  }

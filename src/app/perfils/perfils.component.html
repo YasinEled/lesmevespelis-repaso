@@ -1,0 +1,50 @@
+<app-menusuperior></app-menusuperior>
+<div class="container-fluid">
+    <div class="row align-items-center" style="margin-top: 30px;">
+      <h1 style="padding-left: 20px;">{{ email }}</h1>
+    </div>
+  
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-xs-1 col-sm-1 col-md-3 col-xs-3"></div>
+      <div class="col-xs-10 col-sm-10 col-md-6 col-xs-6" style="padding-bottom: 5px;">
+        <label for="data" style="margin-top: 20px;">Avatar actual&nbsp;&nbsp;</label>
+        <img src="{{ urlAvatar }}" title="avatar">
+      </div>
+    </div>
+  
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-xs-1 col-sm-1 col-md-3 col-xs-3"></div>
+      <div class="col-xs-10 col-sm-10 col-md-6 col-xs-6" style="padding-bottom: 5px;">
+        <label for="data" style="margin-top: 20px;">Nou avatar&nbsp;&nbsp;</label>
+        <img src="{{ previewFitxer }}" title="avatar">
+      </div>
+    </div>    </div>
+  
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-xs-1 col-sm-1 col-md-3 col-xs-3"></div>
+      <div class="col-xs-10 col-sm-10 col-md-4 col-xs-4" style="padding-bottom: 5px;">
+      <div class="form-group">
+        <label for="data" style="margin-top: 20px;">Nom Usuari</label><br />
+        <input type="text" class="form-control" name="nom" [(ngModel)]="nom">
+      </div>
+      <div class="form-group">
+        <div class="col-xs-1 col-sm-1 col-md-3 col-xs-3"></div>
+        <div class="col-xs-10 col-sm-10 col-md-6 col-xs-6" style="padding-bottom: 5px; padding-top: 20px;">
+        <label>
+          <input type="file" class="text-nowrap text-truncate" (change)="triarFitxer($event)" />
+        </label>
+        <button class="btn btn-success" style="margin-top:20px;" [disabled]="!llistaFitxers" (click)="updPerfil()">Actualitzar</button>
+  
+        <div *ngIf="perfilSeleccionat" class="progress mt-2">
+          <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ tpc }}" aria-valuemin="0"
+            aria-valuemax="100" [ngStyle]="{ width: tpc + '%' }">
+            {{ tpc }}%
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  
+  
+  

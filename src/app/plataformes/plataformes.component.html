@@ -1,0 +1,76 @@
+<!-- <app-menusuperior></app-menusuperior> -->
+<div class="container-fluid">
+<div class="row align-items-center" style="margin-top: 30px;">
+    <h1 style="padding-left: 20px; color:green;">Plataformes</h1>
+</div>
+<div class="row" style="margin-top: 30px;">
+    <div class="col-xs-1 col-sm-1 col-md-3 col-xs-3"></div>
+    <div class="col-xs-10 col-sm-10 col-md-6 col-xs-6" style="text-align: right; padding-bottom: 5px;">
+        <button (click)="novaPlataforma()" style="background-color: white; border: 0px;">
+            <img src="../../assets/imatges/add50.png" title="nova plataforma">
+        </button>
+    </div>
+</div>
+<div class="row align-items-center" style="margin-top: 10px;"> 
+    <div class="col-xs-1 col-sm-1 col-md-3 col-xs-3"></div> 
+    <div class="col-xs-10 col-sm-10 col-md-6 col-xs-6" style="text-align: center;"> 
+        <table class="table" width='100%' style='border-collapse: collapse;'> 
+            <thead> 
+                <tr> 
+                <th>id</th>
+                <th>nom</th>  
+                <th>logo</th>
+                <th></th>
+                <th></th> 
+                </tr> 
+            </thead> 
+            <tbody> 
+                <tr  style="vertical-align: middle;" *ngFor="let p of vPlataformes"> 
+                    <td>{{ p.idPlataforma }}</td> 
+                    <td>{{ p.nomPlataforma }}</td> 
+                    <td><img src="{{p.fitxerLogo}}" width="64px;" height="64px;" /></td>
+                    <td>                   
+                        <img src="../../assets/imatges/cancel32.png" title="eliminar plataforma" (click)="eliminarPlataforma(p)">
+                    </td>
+                    <td>                   
+                        <img src="../../assets/imatges/edit32.png" title="modificar plataforma" (click)="modificarPlataforma(p)">
+                    </td>
+                </tr> 
+            </tbody> 
+        </table> 
+    </div> 
+</div> 
+<!-- el formulari -->
+<div id="formulari" class="row align-items-center" style="margin: 20px;" *ngIf=formVisible>
+    <div class="col-xs-1 col-sm-1 col-md-3 col-xs-3"></div>
+    <div class="col-xs-10 col-sm-10 col-md-6 col-xs-4" style="padding-bottom: 5px;">
+        <form #formulari="ngForm">
+            <div class="form-group">
+                <label>
+                    <h3 style="color:green">{{ titolForm }}</h3>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="data" style="margin-top: 20px;">Id</label><br />
+                <input type="text" class="form-control" name="idPlataforma" maxlength=5 placeholder="Introdueix un identificador" [(ngModel)]=plataformaSeleccionada.idPlataforma *ngIf="op=='A'">
+                <input type="text" class="form-control" name="idPlataforma" [(ngModel)]=plataformaSeleccionada.idPlataforma readonly="yes" *ngIf="op!='A'">
+
+                <label for="data" style="margin-top: 20px;">Plataforma</label><br />
+                <input type="text" class="form-control" name="nomPlataforma" placeholder="Introdueix el nom" [(ngModel)]=plataformaSeleccionada.nomPlataforma *ngIf="op!='B'">
+                <input type="text" class="form-control" name="nomPlataforma" [(ngModel)]=plataformaSeleccionada.nomPlataforma readonly="yes" *ngIf="op=='B'">
+
+                <label for="data" style="margin-top: 20px;">Logo</label><br />
+                <textarea class="form-control" name="fitxerLogo"  placeholder="Introdueix el logo en base64" [(ngModel)]=plataformaSeleccionada.fitxerLogo *ngIf="op!='B'"></textarea>
+                <textarea class="form-control" name="fitxerLogo" [(ngModel)]=plataformaSeleccionada.fitxerLogo readonly="yes" *ngIf="op=='B'"></textarea>
+            </div>
+            <div style="margin-top: 30px; margin-bottom: 30px;">
+              <button type="submit" class="btn btn-primary" (click)="addPlataforma()" *ngIf="op=='A'">Inserir</button>
+              <button type="submit" class="btn btn-primary" (click)="updPlataforma()" *ngIf="op=='M'">Modificar</button>
+              <button type="submit" class="btn btn-primary" (click)="delPlataforma()" *ngIf="op=='B'">Eliminar</button>
+              &nbsp;&nbsp;<button class="btn btn-danger" (click)="cancelar()">Cancel·lar</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+  
